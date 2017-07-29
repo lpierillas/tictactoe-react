@@ -14,12 +14,13 @@
         ]
     },
     "dependencies": {
-        "react": "^15.6.1",
-        "react-dom": "^15.6.1",
         "babel-register": "^6.24.1",
         "css-loader": "^0.28.1",
         "eslint-loader": "^1.7.1",
         "prop-types": "^15.5.8",
+        "react": "^15.6.1",
+        "react-dom": "^15.6.1",
+        "react-router-dom": "^4.1.2",
         "serve-static": "^1.12.1",
         "style-loader": "^0.17.0"
     },

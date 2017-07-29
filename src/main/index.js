@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Game from './containers/Game/Game.container';
+import { BrowserRouter} from 'react-router-dom';
+import App from './containers/App/App.container';
 import './index.css';
 
-ReactDOM.render(
-    <Game />,
-    document.getElementById('root'),
-);
+ReactDOM.render((
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>), document.getElementById('root'));

@@ -6,13 +6,14 @@ const config = {
     output: {
         path: path.resolve(__dirname, './dist/assets'),
         filename: 'index.js',
-        publicPath: '/assets'
+        publicPath: '/assets',
     },
 
     devServer: {
         inline: true,
         port: 8081,
-        contentBase: path.resolve(__dirname, './public')
+        contentBase: path.resolve(__dirname, './public'),
+        historyApiFallback: true,
     },
 
     devtool: 'cheap-module-inline-source-map',
@@ -35,7 +36,7 @@ const config = {
                 use: ['style-loader', 'css-loader'],
             },
         ],
-    }
+    },
 };
 
 export default config;
