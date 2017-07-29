@@ -25,11 +25,6 @@ class Game extends React.Component {
         const current = history[history.length - 1];
         const squares = current.squares.slice();
 
-        if (this.state.stepNumber !== this.state.stepNumberDisplayed) {
-            alert('Showing history. Go back to last move to continue playing.');
-            return;
-        }
-
         if (GameUtils.calculateWinner(squares) || squares[i]) {
             return;
         }
@@ -52,7 +47,6 @@ class Game extends React.Component {
         this.setState(
             {
                 stepNumberDisplayed: step,
-                xIsNext: (step % 2) === 0,
             },
         );
     }
@@ -60,7 +54,8 @@ class Game extends React.Component {
     render() {
         let status;
         const history = this.state.history;
-        const current = history[this.state.stepNumberDisplayed];
+        const current = history[history.length - 1];
+        const currentDisplayedInHistory = history[this.state.stepNumberDisplayed];
         const winner = GameUtils.calculateWinner(current.squares);
         const boardComplete = GameUtils.isBoardComplete(current.squares);
 
@@ -70,7 +65,7 @@ class Game extends React.Component {
                 'Game start';
             return (
                 <li key={move}>
-                    <a href="#" onClick={() => this.jumpTo(move)}>{desc}</a>
+                    <button onClick={() => this.jumpTo(move)}>{desc}</button>
                 </li>
             );
         });
@@ -86,7 +81,7 @@ class Game extends React.Component {
         return (
             <div>
                 <div className="game">
-                    <div className="game-board">
+                    <div>
                         <Board
                             squares={current.squares}
                             onClick={i => this.handleClick(i)}
@@ -94,10 +89,22 @@ class Game extends React.Component {
                     </div>
                     <div className="game-info">
                         <div>{status}</div>
-                        <ol>{moves}</ol>
                     </div>
                 </div>
+
                 { boardComplete || winner ? <button onClick={() => this.resetGame()}>Play again</button> : null}
+
+                <div className="game-history">
+                    <div>
+                        <Board
+                            squares={currentDisplayedInHistory.squares}
+                            onClick={() => {}}
+                        />
+                        <div className="game-info">
+                            <ol>{moves}</ol>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
