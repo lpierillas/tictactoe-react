@@ -28,9 +28,7 @@ const isBoardComplete = (squares) => {
     return isComplete;
 };
 
-const GameUtils = {
+export default {
     calculateWinner,
     isBoardComplete,
 };
-
-export default GameUtils;

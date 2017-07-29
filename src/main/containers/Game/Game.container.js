@@ -13,6 +13,11 @@ class Game extends React.Component {
             stepNumberDisplayed: 0,
             xIsNext: true,
         };
+        this.baseState = this.state;
+    }
+
+    resetGame() {
+        this.setState(this.baseState);
     }
 
     handleClick(i) {
@@ -79,17 +84,20 @@ class Game extends React.Component {
         }
 
         return (
-            <div className="game">
-                <div className="game-board">
-                    <Board
-                        squares={current.squares}
-                        onClick={i => this.handleClick(i)}
-                    />
+            <div>
+                <div className="game">
+                    <div className="game-board">
+                        <Board
+                            squares={current.squares}
+                            onClick={i => this.handleClick(i)}
+                        />
+                    </div>
+                    <div className="game-info">
+                        <div>{status}</div>
+                        <ol>{moves}</ol>
+                    </div>
                 </div>
-                <div className="game-info">
-                    <div>{status}</div>
-                    <ol>{moves}</ol>
-                </div>
+                { boardComplete || winner ? <button onClick={() => this.resetGame()}>Play again</button> : null}
             </div>
         );
     }
