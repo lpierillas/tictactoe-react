@@ -26,14 +26,18 @@ const config = {
                 use: [{
                     loader: 'babel-loader',
                     options: {
-                        presets: ['env', 'react'],
-                        plugins: ['babel-plugin-transform-object-rest-spread', 'relay'],
+                        presets: ['env', 'react', 'es2015'],
+                        plugins: ['babel-plugin-transform-object-rest-spread', 'relay', 'transform-class-properties'],
                     },
                 }],
             },
             {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+                loader: 'url-loader',
             },
         ],
     },

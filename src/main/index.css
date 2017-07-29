@@ -52,3 +52,15 @@ ol, ul {
 .game-history {
   margin-top: 20px;
 }
+
+.nav > li {
+  display : inline-block;
+}
+
+.header {
+  border-bottom: 1px solid #EEEEEE;
+}
+
+li.active {
+  background-color: #EEEEEE;
+}
