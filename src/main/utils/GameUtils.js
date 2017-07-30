@@ -28,12 +28,24 @@ const isBoardComplete = (squares) => {
     return isComplete;
 };
 
-const squareAlreadyFilled = (square) => {
-    return (square === 'X' || square === 'O');
+const squareAlreadyFilled = square => (square === 'X' || square === 'O');
+
+const getGameStatus = (currentBoard, xIsNext) => {
+    const winner = calculateWinner(currentBoard);
+    const boardComplete = isBoardComplete(currentBoard);
+
+    if (winner) {
+        return `Winner: ${winner}`;
+    } else if (boardComplete) {
+        return 'No winner';
+    }
+
+    return `Next player: ${xIsNext ? 'X' : 'O'}`;
 };
 
 export default {
     calculateWinner,
     isBoardComplete,
     squareAlreadyFilled,
+    getGameStatus,
 };
