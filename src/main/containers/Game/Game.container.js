@@ -1,13 +1,15 @@
 import React from 'react';
+import { Button, Grid, Row, Col } from 'react-bootstrap';
 import Board from '../../components/Board/Board.component';
 import GameUtils from '../../utils/GameUtils';
+
 
 class Game extends React.Component {
     constructor() {
         super();
         this.state = {
             history: [{
-                squares: Array(9).fill(null),
+                squares: Array(9).fill('-'),
             }],
             stepNumber: 0,
             stepNumberDisplayed: 0,
@@ -25,7 +27,7 @@ class Game extends React.Component {
         const current = history[history.length - 1];
         const squares = current.squares.slice();
 
-        if (GameUtils.calculateWinner(squares) || squares[i]) {
+        if (GameUtils.calculateWinner(squares) || GameUtils.squareAlreadyFilled(squares[i])) {
             return;
         }
 
@@ -65,7 +67,7 @@ class Game extends React.Component {
                 'Game start';
             return (
                 <li key={move}>
-                    <button onClick={() => this.jumpTo(move)}>{desc}</button>
+                    <button className="flat-button" onClick={() => this.jumpTo(move)}>{desc}</button>
                 </li>
             );
         });
@@ -79,32 +81,29 @@ class Game extends React.Component {
         }
 
         return (
-            <div>
-                <div className="game">
-                    <div>
-                        <Board
-                            squares={current.squares}
-                            onClick={i => this.handleClick(i)}
-                        />
-                    </div>
-                    <div className="game-info">
-                        <div>{status}</div>
-                    </div>
-                </div>
-
-                { boardComplete || winner ? <button onClick={() => this.resetGame()}>Play again</button> : null}
-
-                <div className="game-history">
-                    <div>
-                        <Board
-                            squares={currentDisplayedInHistory.squares}
-                            onClick={() => {}}
-                        />
-                        <div className="game-info">
-                            <ol>{moves}</ol>
-                        </div>
-                    </div>
-                </div>
+            <div className="game">
+                <Grid>
+                    <Row className="show-grid">
+                        <Col md={10} className="game-board">
+                            <div className="game-info">{status}</div>
+                            <Board
+                                squares={current.squares}
+                                onClick={i => this.handleClick(i)}
+                            />
+                            { boardComplete || winner ? <Button bsStyle="primary" onClick={() => this.resetGame()}>Play again</Button> : null}
+                        </Col>
+                        <Col md={2} className="game-history">
+                            <div className="game-info">Game History</div>
+                            <Board
+                                squares={currentDisplayedInHistory.squares}
+                                onClick={() => {}}
+                            />
+                            <div className="moves-list">
+                                <ol>{moves}</ol>
+                            </div>
+                        </Col>
+                    </Row>
+                </Grid>
             </div>
         );
     }

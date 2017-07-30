@@ -1,56 +1,39 @@
-body {
-  font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
-}
-
-ol, ul {
-  padding-left: 30px;
-}
-
-.board-row:after {
-  clear: both;
-  content: "";
-  display: table;
-}
-
 .status {
   margin-bottom: 10px;
+}
+
+.board {
+  margin: 10px 0;
 }
 
 .square {
   background: #fff;
   border: 1px solid #999;
-  float: left;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 34px;
-  height: 34px;
-  margin-right: -1px;
-  margin-top: -1px;
+  font-size: 20px;
+  height: 80px;
   padding: 0;
   text-align: center;
-  width: 34px;
+  width: 80px;
+  margin: 2px;
+  border-radius: 2px;
+  color: transparent;
+}
+
+.square:hover {
+  background-color: #E3F2FD;
 }
 
 .square:focus {
   outline: none;
 }
 
-.kbd-navigation .square:focus {
-  background: #ddd;
+.square-filled {
+  background-color: #90CAF9;
+  color: #000;
 }
 
-.game {
-  display: flex;
-  flex-direction: row;
-}
-
-.game-info {
-  margin-left: 20px;
-}
-
-.game-history {
-  margin-top: 20px;
+.square-filled:hover {
+  background-color: #90CAF9;
 }
 
 .nav > li {
@@ -63,4 +46,92 @@ ol, ul {
 
 li.active {
   background-color: #EEEEEE;
+}
+
+.game {
+  margin: 10px;
+}
+
+.game-history {
+  padding: 20px;
+  text-align: center
+}
+
+.game-history .square {
+  cursor: default;
+  height: 40px;
+  width: 40px;
+}
+
+.game-history .square:hover {
+  background-color : transparent;
+}
+
+.game-history .square-filled:hover {
+  background-color : #90CAF9;
+}
+
+.game-board {
+  border-right: 1px solid #EEEEEE;
+  padding: 20px;
+  text-align: center;
+}
+
+.moves-list {
+  display: block;
+  clear: both;
+}
+
+.float-right {
+  float:right;
+}
+
+.flat-button {
+  border: none;
+  background-color: transparent;
+  color: #2196F3;
+}
+
+.flat-button:hover {
+  border: none;
+  background-color: transparent;
+  color: #1565C0;;
+}
+
+.flat-button:focus {
+  outline: none;
+}
+
+.text-align-right {
+  text-align : right;
+}
+
+.row {
+  margin: 0px;
+}
+
+ol {
+  list-style-type: none;
+  padding: 0px;
+}
+
+.btn {
+  background-color: #2196F3;
+  color: #FFF;
+}
+
+.btn:hover {
+  background-color: #1565C0;
+}
+
+a {
+  color: #2196F3;
+}
+
+a:hover {
+  color: #1565C0;
+}
+
+.game-info {
+  text-transform: uppercase;
 }
