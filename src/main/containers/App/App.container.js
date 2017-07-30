@@ -1,5 +1,6 @@
 import React from 'react';
 import { Nav, NavItem } from 'react-bootstrap';
+import Footer from '../../components/Footer/Footer.component';
 
 import Main from '../Main/Main.containers';
 
@@ -11,8 +12,8 @@ const App = () => (
                 <NavItem href="/play">Play</NavItem>
             </Nav>
         </div>
-
         <Main />
+        <Footer />
     </div>
 );
 
